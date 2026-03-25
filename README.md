@@ -107,7 +107,7 @@ results/
 
 - [x] Phase 1: MVP - 线性执行流程
 - [x] Phase 2: 回溯机制
-- [ ] Phase 3: 工具选择器
+- [x] Phase 3: 工具选择器
 
 ## License
 
