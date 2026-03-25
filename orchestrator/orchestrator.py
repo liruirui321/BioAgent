@@ -6,6 +6,7 @@ from agents.structural_agent import StructuralAgent
 from agents.functional_agent import FunctionalAgent
 from orchestrator.qc_checker import QCChecker
 from orchestrator.backtrack import BacktrackEngine
+from utils.tool_selector import ToolSelector
 
 class Orchestrator:
     def __init__(self, args, logger):
@@ -20,7 +21,14 @@ class Orchestrator:
 
         self.qc_checker = QCChecker(thresholds)
         self.backtrack_engine = BacktrackEngine(logger)
+        self.tool_selector = ToolSelector()
+        self.species_profile = self.tool_selector.get_species_profile(args.species)
         self.qc_results = {}
+
+        # Log selected tools
+        self.logger.info(f"Species: {args.species}")
+        self.logger.info(f"Expected repeat content: {self.species_profile['expected_repeat_content']*100}%")
+        self.logger.info(f"Expected gene count: {self.species_profile['expected_gene_count']}")
 
     def run(self):
         try:
@@ -97,7 +105,7 @@ class Orchestrator:
         )
 
         self.qc_results['repeat'] = repeat_result
-        passed, _ = self.qc_checker.check_repeat(self.qc_results['repeat'])
+        passed, _ = self.qc_checker.check_repeat(self.qc_results['repeat'], species_profile=self.species_profile)
         self.logger.info(f"Repeat QC: {'PASS' if passed else 'FAIL'} - Content: {repeat_result['repeat_content']}%")
         return repeat_result
 
