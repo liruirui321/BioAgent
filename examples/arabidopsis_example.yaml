@@ -1,0 +1,9 @@
+# Example configuration for Arabidopsis thaliana
+
+input: /path/to/arabidopsis.hifi.fq.gz
+rnaseq: /path/to/arabidopsis.rnaseq.bam
+species: plant
+ploidy: 2
+heterozygosity: low
+output: ./arabidopsis_results/
+threads: 16
