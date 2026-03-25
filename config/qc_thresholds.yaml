@@ -1,0 +1,15 @@
+assembly:
+  busco_complete_min: 90.0
+  n50_min: 1000000
+
+repeat:
+  content_min_ratio: 0.5
+  content_max_ratio: 1.5
+
+structural:
+  busco_protein_min: 85.0
+  single_exon_max_ratio: 0.3
+  gene_count_max_ratio: 1.5
+
+functional:
+  annotation_coverage_min: 60.0
