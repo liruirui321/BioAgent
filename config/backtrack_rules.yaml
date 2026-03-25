@@ -1,0 +1,10 @@
+backtrack_rules:
+  structural_to_assembly:
+    condition: "structural_busco < assembly_busco"
+    reason: "结构注释 BUSCO 低于组装 BUSCO，组装可能不完整"
+
+  structural_to_repeat:
+    condition: "single_exon_ratio > 0.3 AND repeat_content < expected * 0.5"
+    reason: "单外显子基因过多且重复含量低，softmasking 不足"
+
+max_backtrack: 2
