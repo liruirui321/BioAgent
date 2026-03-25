@@ -34,7 +34,9 @@ class QCChecker:
         n50_ok = qc_results.get('n50', 0) >= self.thresholds['assembly']['n50_min']
         return busco_ok and n50_ok, qc_results
 
-    def check_repeat(self, qc_results, expected_content=0.4):
+    def check_repeat(self, qc_results, expected_content=0.4, species_profile=None):
+        if species_profile:
+            expected_content = species_profile.get('expected_repeat_content', 0.4)
         content = qc_results.get('repeat_content', 0)
         min_ok = content >= expected_content * self.thresholds['repeat']['content_min_ratio']
         max_ok = content <= expected_content * self.thresholds['repeat']['content_max_ratio']
