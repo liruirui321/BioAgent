@@ -1,0 +1,37 @@
+# 工具链配置
+
+assembly:
+  hifi:
+    - name: hifiasm
+      priority: 1
+      species: [plant, animal, fungus]
+    - name: verkko
+      priority: 2
+      species: [plant, animal]
+
+repeat:
+  denovo:
+    - name: RepeatModeler
+      priority: 1
+      species: [plant, animal, fungus]
+  masking:
+    - name: RepeatMasker
+      priority: 1
+      species: [plant, animal, fungus]
+
+structural:
+  - name: BRAKER3
+    priority: 1
+    species: [plant, animal, fungus]
+    requires: [rnaseq]
+  - name: AUGUSTUS
+    priority: 2
+    species: [plant, animal, fungus]
+
+functional:
+  - name: eggNOG-mapper
+    priority: 1
+    species: [plant, animal, fungus]
+  - name: InterProScan
+    priority: 2
+    species: [plant, animal, fungus]
