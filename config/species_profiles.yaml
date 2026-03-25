@@ -1,0 +1,16 @@
+# 物种配置
+
+plant:
+  expected_repeat_content: 0.5
+  expected_gene_count: 30000
+  busco_lineage: embryophyta_odb10
+
+animal:
+  expected_repeat_content: 0.4
+  expected_gene_count: 20000
+  busco_lineage: metazoa_odb10
+
+fungus:
+  expected_repeat_content: 0.1
+  expected_gene_count: 12000
+  busco_lineage: fungi_odb10
