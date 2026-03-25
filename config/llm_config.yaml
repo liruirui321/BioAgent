@@ -1,0 +1,29 @@
+# LLM 辅助回溯决策配置
+
+enabled: false  # 默认关闭，使用规则引擎
+
+llm:
+  provider: anthropic  # anthropic, openai
+  model: claude-3-haiku-20240307
+  api_key_env: ANTHROPIC_API_KEY
+
+prompt_template: |
+  你是基因组分析专家。根据以下质控结果，判断是否需要回溯到上游步骤：
+
+  组装质控:
+  - BUSCO: {assembly_busco}%
+  - N50: {assembly_n50}
+
+  重复注释:
+  - 重复含量: {repeat_content}%
+
+  结构注释:
+  - BUSCO: {structural_busco}%
+  - 单外显子基因比例: {single_exon_ratio}%
+
+  请回答:
+  1. 是否需要回溯? (是/否)
+  2. 如果需要，回溯到哪个步骤? (assembly/repeat)
+  3. 原因是什么?
+
+  以 JSON 格式回答: {{"backtrack": true/false, "target": "assembly/repeat/null", "reason": "原因"}}
