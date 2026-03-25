@@ -1,0 +1,20 @@
+# 比较基因组学分析配置
+
+comparative:
+  min_species: 2  # 最少需要的物种数
+
+  orthofinder:
+    evalue: 1e-5
+    inflation: 1.5
+
+  synteny:
+    min_block_size: 5
+    max_gaps: 25
+
+  pangenome:
+    core_threshold: 1.0  # 所有物种都有
+    dispensable_threshold: 0.5  # 50%以上物种有
+
+  cnv:
+    min_copy: 2  # 最少拷贝数
+    max_copy: 10  # 最大拷贝数
